@@ -1,0 +1,59 @@
+    <header>
+        <div class="container">
+            <div class="col-sj-12">
+                <div class="up-container wow bounceIn" data-wow-delay="0.9s">
+                    <!-- search file -->
+                    <form id="search" action="{#% url "search" %#}" method="get">
+                        <div class="input-box">
+                            <input id="files-info" name="kw" type="text" onkeydown="if(event.keyCode==13){return false;}" 
+                                    autocomplete="off" placeholder="Search File" />
+                            <span class="iconfont search-text-icon">&#xe714;</span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <!-- div class="logo wow bounceInDown" data-wow-delay="0.4s">
+                        <a class="site-logo" href="/"></a>
+                    </div -->
+                </div>
+                <div class="col-sm-6">
+                    <div class="logo-desc wow bounceInRight" data-wow-delay="0.4s">
+                        <a href="{% url "my" %}"> <span class="logo-desc-text" href="/">
+                            <i class="iconfont">&#xe619;</i>Manage My Files</span>
+                        </a>
+                    </div>
+                </div>
+            </div><!-- /.Row -->
+        </div><!-- ./container -->
+    </header>
+    <section id="content">
+        <div class="container">
+            <div class="col-sj-12">
+                <div class="up-container wow bounceIn" data-wow-delay="0.9s">
+                    <!-- 上传文件 -->
+                    <form id="form" action="/" method="post" runat="server" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <input id="files" name="file" multiple="multiple" style="display: none;" class="file-addr" type="file" />
+                        <input id="bt" type="submit" value="Upload File" />
+                        <input id="bt" type="button" value="Choose File" />
+                    </form>
+                </div>
+                <!-- show_server_list -->
+                <div class="show-file bounceIn">
+                    <div class="file-title">
+                        <div class="file-name1" style="width:25%;">FileName</div>
+                        <div class="file-size" style="width:10%;">FileSize</div>
+                        <div class="file-size" style="width:10%;">Visits</div>
+                        <div class="file-date" style="width:20%;">FileDate</div>
+                        <div class="file-link" style="width:35%;">FileLink</div>
+                    </div>
+                    {% block content %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div><!-- /.container -->
+    </section>
